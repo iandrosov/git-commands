@@ -1,6 +1,16 @@
 # git-commands Cheatsheet
 Useful set of git commands to remeber
 
+Initial repository clone, repository URL can be of type HTTP or SSH if using RSH key. Often SSH clone is used with git interface to VSTS repo
+
+```
+# URL Examples
+HTTP_URL="https://github.com/MyCompany/project-dev.git"
+SSH_URL="git@github.com:MyCompany/project-dev.git"
+
+git clone <repo name URL HTTP/SSH>
+```
+
 Create New Feature Branch
 Make new branch from `master` branch
 
@@ -9,7 +19,7 @@ git checkout -b name-my-feature-branch
 ```
 
 Sometime forgetful `.gitignore` `.DS_Store` once commited annoying to clean up.
-How to remove it from remote `.DS-Store` tracking run set of these commands from project root directory removes from all subdir.
+How to remove it from remote `.DS-Store` tracking run set of these commands from project root directory removes from all subdir on the masteer branch.
 
 ```javascript
 find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
@@ -29,7 +39,7 @@ git config --global core.excludesfile ~/.gitignore_global
 
 Set up SSH key with Github for secure clone repo etc.
 In MAC user root directory generate rsh key and save it in github with these commands.
-this porcess will save 2 files in user home directory
+this process will save 2 files in user home directory
 .ssh/id_rsa. and .ssh/id_rsa.pub.
 
 ```javascript
