@@ -58,3 +58,32 @@ $ cat .ssh/id_rsa.pub
 <SSH-RSA Key will print here, copy this keye and save to Github keys>
 
 ```
+
+There are times we need to start with empty directory. Regular gitflow will allways have master branch with full code and otehr branches will be feature extensions. this case when we need to add feature that should not ahve impact to existing code such as Salesforce metadata is good example, to add new fields to custom object we do not want to redeploy entire massive ORG master. for this case can create `empty` branch taht has no files in it andd keep it empty.
+we clone `empty` to start, then we create our feature branch from empty and add new code to it then commit only feaature branch. 
+
+```
+git clone <REPO NAME>
+cd <REPO NAME DIRECTORY>
+# We are in master branch now
+git checkout empty
+# we are in empty branch and directory is empty
+git checkout -b <new branch name>
+git branch
+
+# Make some changes, add files to setup new branch like /src directoy and package.xml
+
+# create Source directory
+mkdir src
+# copy base setup for deployemnt
+cp ../../basedev/sample-package.xml src/package.xml
+
+# setup remote branch as remote in repo by push new branch
+git push origin <FEATURE BRANCH NAME>
+```
+
+To commit changes to this new feature/story branch always use origin.
+
+```
+git push origin <FEATURE BRANCH NAME>
+```
